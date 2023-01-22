@@ -20,7 +20,7 @@ function getCSV() {
     });
 
     var encodedUri = encodeURI(csvContent);
-
+    
     downloadURI(encodedUri, "vocabList.csv");
 }
 
