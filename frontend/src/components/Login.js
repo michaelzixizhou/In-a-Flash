@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+import styled from 'styled-components';
 
-
+const LoginWrapper = styled.div`
+  border: 1px;
+`
 
 function Login() {
   // state variable to track the login status
@@ -30,7 +33,7 @@ function Login() {
   }
 
   return (
-    <div>
+    <LoginWrapper>
       {isLoggedIn ? (
         <div>
           <p>You are logged in!</p>
@@ -49,7 +52,7 @@ function Login() {
           <button onClick={handleLogin}>Login</button>
         </form>
       )}
-    </div>
+    </LoginWrapper>
   );
 }
 
