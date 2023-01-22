@@ -15,7 +15,7 @@ class Deck(models.Model):
     cards = models.ManyToManyField(
         Flashcard
     )
-    location = models.CharField(max_length=500)
+    location = models.CharField(max_length=500, default="anonymous")
     author = models.CharField(max_length=500)
 
     def __str__(self) -> str:
