@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import CountryPage from "./components/CountryPage";
+import Login from "./components/Login";
 import MapPage from "./components/MapPage";
 import Navbar from "./components/Navbar";
+import Notes from "./components/Notes";
 
 function App() {
   return (
@@ -46,6 +48,8 @@ function App() {
             element={<CountryPage country="China" />}
           ></Route>
           <Route path="/" element={<MapPage />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/notes" element={<Notes />}></Route>
         </Routes>
       </Router>
     </div>
