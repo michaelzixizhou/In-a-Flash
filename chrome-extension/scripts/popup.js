@@ -26,6 +26,18 @@ window.onload = (event) => {
         el.addEventListener("click", viewFunction, false);
     else if (el.attachEvent)
         el.attachEvent('onclick', viewFunction);
+
+    var el = document.getElementById("hubbtn");
+    if (el.addEventListener)
+        el.addEventListener("click", openFunction, false);
+    else if (el.attachEvent)
+        el.attachEvent('onclick', openFunction);
+
+    var el = document.getElementById("clearbtn");
+    if (el.addEventListener)
+        el.addEventListener("click", clearFunction, false);
+    else if (el.attachEvent)
+        el.attachEvent('onclick', clearFunction);
   }
 function doFunction() {
     console.log("joe mama");
@@ -47,6 +59,15 @@ function viewFunction() {
         }
     });
     alert(display);
+}
+
+function clearFunction() {
+    page.csvString = "";
+    page.saveList();
+}
+
+function openFunction() {
+    page.hubFunction();
 }
 
 function downloadFunction() {

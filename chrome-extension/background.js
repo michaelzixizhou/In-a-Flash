@@ -71,8 +71,40 @@ function getList() {
 saveList();
 getList();
 
- 
+function hubFunction() {
+    var newURL = "http://localhost:8080";
+    chrome.tabs.create({ url: newURL });
+    var JSON = csvToJSON(csvString);
 
+    //json POST code
+    xhr = new XMLHttpRequest();
+    xhr.open("POST", newURL, true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var json = JSON.parse(xhr.responseText);
+        }
+    }
+    xhr.send(JSON);
+}
+
+function csvToJSON(csv) {
+    //files (csvString) saved as: hello,bonjour$goodbye,au revoir$cow,vauche 
+    //actually converts that to JSON
+    var lines = csv.split("$");
+
+    var result = "[";
+
+    //when i = 0 the value may be undefined (not sure)
+    for (var i = 1; i < lines.length; i++) {
+        var words = lines[i].split(",");
+        result += "\r\n" + "  " + "{";
+        result += "\r\n" + "    " + "\"front\": \"" + words[0] + "\",";
+        result += "\r\n" + "    " + "\"back\": \"" + words[1] + "\"";
+        result += "\r\n" + "  " + "},";
+    }
+    return result += ("\r\n" + "]");
+}
 
 
 

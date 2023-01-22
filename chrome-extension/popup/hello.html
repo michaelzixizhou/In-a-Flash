@@ -33,6 +33,22 @@
             padding: 20px;
         }
 
+        button {
+            width: 100%;
+            background-color: white;
+            color: royalblue;
+            padding: 10px 16px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: Sans-Serif;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 0;
+            background: none;
+        }
+
         input[type=button] {
             width: 100%;
             background-color: white;
@@ -86,8 +102,20 @@
 
     <div>
         <body>
+
             <h1>In a Flash</h1>
+
+            <span>
+                <button type="button">
+                    <img src="C:\Users\MaxXu\source\repos\In-a-Flash\chrome-extension\images\hello_extensions.png" alt="buttonpng" border="0" id="hubbtn"
+                         style="float: right; margin-top: -80px" />
+                </button>
+            </span>
+
+
             <form id="form1">
+
+
                 <label for="term">Term:</label><br>
                 <input type="text" id="term" name="term"><br>
 
@@ -97,10 +125,12 @@
                 <br>
 
 
+
                 <!-- <h2>Current Cards in Deck: 10</h2> -->
                 <input type="button" value="Submit" id="termbtn">
                 <input type="button" value="View Deck" id="viewbtn">
                 <input type="button" value="Download Deck" id="downbtn">
+                <input type="button" value="Clear Deck" id="clearbtn">
             </form>
 
 
