@@ -20,6 +20,12 @@ window.onload = (event) => {
         el.addEventListener("click", downloadFunction, false);
     else if (el.attachEvent)
         el.attachEvent('onclick', downloadFunction);
+
+    var el = document.getElementById("viewbtn");
+    if (el.addEventListener)
+        el.addEventListener("click", viewFunction, false);
+    else if (el.attachEvent)
+        el.attachEvent('onclick', viewFunction);
   }
 function doFunction() {
     console.log("joe mama");
@@ -28,6 +34,19 @@ function doFunction() {
     console.log(x);
     console.log(y);
     addToVocab(x, y);
+}
+
+function viewFunction() {
+    page.getList();
+    const vocab = page.csvString.split("$");
+    let display = "Your Deck has the following " + (vocab.length - 1) + " cards:" + "\r\n"
+    vocab.forEach(function (vocabArray) {
+        if (vocabArray != "undefined") {
+            const card = vocabArray.split(",");
+            display += "Term: " + card[0] + "\r\n" + "Description: " + card[1] + "\r\n";
+        }
+    });
+    alert(display);
 }
 
 function downloadFunction() {
