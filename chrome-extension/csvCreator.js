@@ -10,12 +10,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             sendResponse({ navURL: tabURL });
         });
     }
-}
-
-
-
-
-
+})
 
 const vocab = [
     ["hello", "bonjour"],
@@ -39,7 +34,7 @@ function getCSV() {
     });
 
     var encodedUri = encodeURI(csvContent);
-    
+
     downloadURI(encodedUri, "vocabList.csv");
 }
 
