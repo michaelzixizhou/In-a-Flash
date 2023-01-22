@@ -1,15 +1,12 @@
 import "./App.css";
 import React, { useState } from "react";
-import {
-  ComposableMap,
-  Geographies,
-  Geography,
-  Marker,
-  Annotation,
-  ZoomableGroup
-} from "react-simple-maps";
+import { BrowserRouter as Router} from "react-router-dom";
 
+import Header from "./components/Header";
+import HeaderParagraph from "./components/HeaderParagraph";
 import tooltip  from 'react-tooltip';
+import MapChart from "./components/MapChart";
+import Navbar from "./components/Navbar";
 
 const markers = [
   {
@@ -17,11 +14,8 @@ const markers = [
     name: "s"
   }
 ]
-const geoUrl =
-  "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
 
 function App() {
-  const [content, setcontent] = useState("");
   return (
     <div className="App" style={{
       width: "100%",
@@ -30,44 +24,18 @@ function App() {
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      background: "#F0F0F9",
+      background: "#4169e1",
       fill: "#68C5D3",
       fontSize: "200"
     }}
     >
-      <h1>In A Flash</h1>
-      {/* <tooltip>{content}</tooltip> */}
-      <div style={{ width: "100%"}}>
-        <ComposableMap data-tip="">
-          <ZoomableGroup>
-            <Geographies geography={geoUrl}>
-              {({geographies}) =>
-                geographies.map((geo) => (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    onMouseEnter={() => {
-                      const { NAME } = geo.properties;
-                      setcontent(`${NAME}`)
-                    }}
-                    onMouseDown={() => {
-                      setcontent("");
-                    }}
-                    style={{
-                      hover: {
-                        fill: "#F53",
-                        outline: "None"
-                      }
-                    }}
-                  />
-                ))
-              
-              }
-              
-            </Geographies>
-          </ZoomableGroup>
-        </ComposableMap>
-      </div>
+      <Router>
+      <Navbar/>
+      <Header></Header>
+      <HeaderParagraph></HeaderParagraph>
+      <MapChart></MapChart>
+      </Router>
+      
     </div>
   );
 }
