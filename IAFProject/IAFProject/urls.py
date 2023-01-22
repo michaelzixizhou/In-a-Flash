@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from IAFApp.views import HelloWorld
+from IAFApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello_world/', HelloWorld.as_view())
+    path('api/author/create/', views.author_create),
+    path('api/author/detail/', views.author_detail),
+    path('api/flashcard/create/', views.flashcard_create),
+    path('api/flashcard/detail/', views.flashcard_detail),
+    path('api/deck/create/', views.deck_create),
+    path('api/deck/detail/', views.deck_detail)         
 ]
