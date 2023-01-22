@@ -12,7 +12,7 @@ class DeckSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Deck
-        fields = ("cards", "author")
+        fields = ("cards", "location", "author")
 
 
 class AuthorSerializer(serializers.ModelSerializer):

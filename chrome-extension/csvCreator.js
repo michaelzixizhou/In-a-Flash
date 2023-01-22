@@ -10,12 +10,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             sendResponse({ navURL: tabURL });
         });
     }
-}
-
-
-
-
-
+})
 
 const vocab = [
     ["hello", "bonjour"],
