@@ -1,5 +1,13 @@
 console.log("This is a popup!");
-var cowDescription = "";
+
+if (typeof browser === "undefined") {
+    var browser = chrome;
+}
+let page = browser.extension.getBackgroundPage();
+page.getList();
+
+
+
 window.onload = (event) => {
     var el = document.getElementById("termbtn");
     if (el.addEventListener)
@@ -17,7 +25,6 @@ function doFunction() {
     console.log("joe mama");
     var x = document.querySelector("#term").value;
     var y = document.querySelector("#desc").value;
-    document.getElementById("h1") = y;
     console.log(x);
     console.log(y);
     addToVocab(x, y);
@@ -28,29 +35,28 @@ function downloadFunction() {
     getCSV();
 }
 
-let csvContent = "data:text/csv;charset=utf-8,";
-
-const vocab = [
-    ["hello", "bonjour"],
-    ["goodbye", "au revoir"]
-];
-
 function addToVocab(front, back) {
     //add to vocab
-    const value = [front, back];
-    vocab.push(value);
+    page.getList();
+    if (page.csvString == "") {
+        page.csvString = front + "," + back;
+    }
+    else {
+        page.csvString += "$" + front + "," + back;
+    }
+    
+    page.saveList();
 }
 
-addToVocab("cheese", "fromage");
-
 function getCSV() {
-    
-
+    let csvContent = "data:text/csv;charset=utf-8,";
+    page.getList();
+    const vocab = page.csvString.split("$");
     vocab.forEach(function (vocabArray) {
-        let vocab = vocabArray.join(",");
-        csvContent += vocab + "\r\n";
+        if (vocabArray != "undefined") {
+            csvContent += vocabArray + "\r\n";
+        }
     });
-
     var encodedUri = encodeURI(csvContent);
     downloadURI(encodedUri, "vocabList.csv");
 }
@@ -66,15 +72,3 @@ function downloadURI(uri, name) {
     delete link;
 }
 
-chrome.runtime.onMessage.addListener(
-    function (request, sender, sendResponse) {
-        if (request.msg === "something_completed") {
-            //  To do something
-            console.log(request.data.subject);
-            console.log(request.data.content);
-        }
-    }
-);
-
-
-addToVocab("cheese", cowDescription);

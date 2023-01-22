@@ -2,8 +2,8 @@
     "name": "In a Flash",
     "description": "Base Level Extension",
     "version": "1.0",
-    "manifest_version": 3,
-    "action": {
+    "manifest_version": 2,
+    "browser_action": {
         "default_popup": "popup/hello.html",
         "default_icon": "images/hello_extensions.png"
     },
@@ -14,7 +14,8 @@
         "128": "images/icon-128.png"
     },
     "background": {
-        "service_worker": "scripts/eventPage.js"
+        "persistent": true,
+        "scripts": ["background.js"]
     },
     "permissions": [
         "contextMenus",
