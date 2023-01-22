@@ -1,14 +1,115 @@
 <!DOCTYPE html>
 <html>
-  <body>
-    <h1>Hello Extensions</h1>
-    <form id="form1">
-      <label for="term">Term:</label><br>
-      <input type="text" id="term" name="fname"><br>
-      <label for="desc">Description:</label><br>
-      <input type="text" id="desc" name="lname">
-      <input type="button" value="Submit" id="termbtn">
-    </form> 
-    <script src="../scripts/popup.js"></script>
-  </body>
+<head>
+    <style>
+        body {
+            background-color: white;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-family: Sans-Serif;
+            font-size: 30px;
+        }
+
+        h2 {
+            color: white;
+            text-align: center;
+            font-family: Sans-Serif;
+            font-size: 20px;
+        }
+
+
+        form {
+            color: white;
+            font-family: Sans-Serif;
+            font-size: 20px;
+        }
+
+        div {
+            border-radius: 5px;
+            background-color: royalblue;
+            padding: 20px;
+        }
+
+        input[type=button] {
+            width: 100%;
+            background-color: white;
+            color: royalblue;
+            padding: 10px 16px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-family: Sans-Serif;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        input[type=text], select {
+            padding: 6px 5px;
+            margin: 8px 0;
+            display: inline-block;
+            border-radius: 4px;
+            box-sizing: content-box;
+            height: 40px;
+            width: 300px;
+            font-size: 19px;
+            font-family: Sans-Serif;
+        }
+
+        p {
+            padding: 6px 0px;
+            margin: 8px 0;
+            display: block;
+            border-radius: 4px;
+            box-sizing: content-box;
+            height: 20px;
+            font-size: 20px;
+            font-family: Sans-Serif;
+        }
+
+        textarea {
+            padding: 6px 3px;
+            display: block;
+            border-radius: 4px;
+            height: 100px;
+            font-size: 17px;
+            font-family: Sans-Serif;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div>
+        <body>
+            <h1>In a Flash</h1>
+            <form id="form1">
+                <label for="term">Term:</label><br>
+                <input type="text" id="term" name="term"><br>
+
+
+                <p><label for="desc">Description:</label></p>
+                <textarea id="desc" name="desc" rows="5" cols="28"></textarea>
+                <br>
+
+
+
+                <h2>Current Cards in Deck: 10</h2>
+                <input type="button" value="Submit" id="termbtn">
+                <input type="button" value="View Deck" id="viewbtn">
+                <input type="button" value="Download Deck" id="downbtn">
+            </form>
+
+
+            <script src="../scripts/popup.js"></script>
+        </body>
+    </div>
+
+</body>
 </html>
+
+
