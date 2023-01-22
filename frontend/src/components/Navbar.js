@@ -1,12 +1,14 @@
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from 'styled-components';
 import logo from "./hello_extensions.png";
+
 const NavbarWrapper = styled.div`
   width: 100%;
   height: 5.5rem;
   background: #fff;
   z-index: 15;
-  position: fixed;	
+  position: fixed;
   left: 0;
   top: 0;
   padding: 0 10vw;
@@ -52,8 +54,8 @@ const BurgerbarWrapper = styled.div`
   position: fixed;
   top: 0%;
   right: 0%;
-  margin-top: 1.0rem;
-  margin-right: 2.0rem;
+  margin-top: 1rem;
+  margin-right: 2rem;
   @media (min-width: 750px) {
     display: none;
   }
@@ -79,25 +81,54 @@ const Logo = styled.div`
 `
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // check if the user is already logged in
+  const loggedIn = localStorage.getItem("isLoggedIn");
+
+  useEffect(() => {}, [loggedIn]);
+
   return (
-      <>
+    <>
       <NavbarWrapper>
         <Logo>
           <img src={logo}></img>
         </Logo>
-          <NavTitle>In A Flash</NavTitle>
-          <NavbarComponent>
-            <NavLink title="home" to="/" style={{textDecoration: 'none'}}><NavFont>Home</NavFont></NavLink>
-            <NavLink title="account" to="account" style={{textDecoration: 'none'}}><NavFont>Account</NavFont></NavLink>
-          </NavbarComponent>
-          <BurgerbarWrapper>
-            <WhiteLine/>
-            <WhiteLine/>
-            <WhiteLine/>
-          </BurgerbarWrapper>
-        </NavbarWrapper>
-      </>
-    );
-}
+        <NavTitle>In A Flash</NavTitle>
+        <NavbarComponent>
+          <NavLink title="home" to="/" style={{ textDecoration: "none" }}>
+            <NavFont>Home</NavFont>
+          </NavLink>
+          <NavLink
+            title="account"
+            to="account"
+            style={{ textDecoration: "none" }}
+          ></NavLink>
+          {!loggedIn && (
+            <NavLink to="/login" style={{ textDecoration: "none" }}>
+              <NavFont>Login</NavFont>
+            </NavLink>
+          )}
+
+          {loggedIn && (
+            <NavLink to="/notes" style={{ textDecoration: "none" }}>
+              <NavFont>My Notes</NavFont>
+            </NavLink>
+          )}
+          {loggedIn && (
+            <NavLink to="/login" style={{ textDecoration: "none" }}>
+              <NavFont>Logout</NavFont>
+            </NavLink>
+          )}
+        </NavbarComponent>
+        <BurgerbarWrapper>
+          <WhiteLine />
+          <WhiteLine />
+          <WhiteLine />
+        </BurgerbarWrapper>
+      </NavbarWrapper>
+    </>
+  );
+};
 
 export default Navbar;
