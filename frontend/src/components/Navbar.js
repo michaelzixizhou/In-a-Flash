@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
 import styled from 'styled-components';
-
+import logo from "./hello_extensions.png";
 const NavbarWrapper = styled.div`
   width: 100%;
   height: 5.5rem;
@@ -31,8 +30,9 @@ const NavTitle = styled.h1`
   color: #4169e1;
   text-decoration: none;
   transition: all 0.1s ease-out;
-  margin-right: 80vw;
+  position: fixed;
   margin-top: 1.5rem;
+  left: 100px;
 `;
 
 const NavFont = styled.h2`
@@ -71,10 +71,20 @@ const WhiteLine = styled.span`
   cursor: pointer;
 `;
 
+const Logo = styled.div`
+  display: inline-block;
+  position: fixed;
+  left: 30px;
+  top: 20px;
+`
+
 const Navbar = () => {
   return (
       <>
-        <NavbarWrapper>
+      <NavbarWrapper>
+        <Logo>
+          <img src={logo}></img>
+        </Logo>
           <NavTitle>In A Flash</NavTitle>
           <NavbarComponent>
             <NavLink title="home" to="/" style={{textDecoration: 'none'}}><NavFont>Home</NavFont></NavLink>
