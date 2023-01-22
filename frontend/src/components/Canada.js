@@ -1,23 +1,67 @@
-import React from "react"
-import styled from 'styled-components';
+import Collapsible from "react-collapsible";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
-    justify-content: column;
-`
+  justify-content: column;
+`;
 const Head = styled.div`
-    display: relative;
-    flex: 1;
-`
+  display: relative;
+  flex: 1;
+`;
 
 function Canada() {
-    return (
-        <Wrapper>
-            <Head> Test</Head>
-            <h1>This is Canada</h1>
-            <div> Test</div>
-        </Wrapper>
-            
-    );
+  return (
+    <Collapsible trigger="University of Toronto">
+      <h1>Courses</h1>
+      <Collapsible
+        trigger="BIO101 (4 Flash Cards)"
+        style={{ backgroundcolor: "red" }}
+      >
+        <table>
+          <tr>
+            <td style={{ fontWeight: "bold" }}>
+              Where are white blood cells located?
+            </td>
+            <td>
+              Your white blood cells are in your bloodstream and travel through
+              blood vessel walls and tissues to locate the site of an infection.
+            </td>
+          </tr>
+          <tr>
+            <td style={{ fontWeight: "bold" }}>
+              How big are white blood cells?
+            </td>
+            <td>
+              You can only see white blood cells under a microscope, as they are
+              extremely small.
+            </td>
+          </tr>
+          <tr>
+            <td style={{ fontWeight: "bold" }}>
+              How are white blood cells formed?
+            </td>
+            <td>
+              White blood cell formation occurs in the soft tissue inside of
+              your bones (bone marrow). Two types of white blood cells
+              (lymphocytes) grow in the thymus gland (T cells) and lymph nodes
+              and spleen (B cells).
+            </td>
+          </tr>
+          <tr>
+            <td style={{ fontWeight: "bold" }}>
+              What are white blood cells made of?
+            </td>
+            <td>
+              White blood cells originate from cells that morph into other cells
+              in the body (stem cell) within the soft tissue of your bones (bone
+              marrow).
+            </td>
+          </tr>
+        </table>
+      </Collapsible>
+      <Collapsible trigger="BIO201"></Collapsible>
+    </Collapsible>
+  );
 }
 
 export default Canada;

@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 
+import Canada from "./components/Canada";
 import CountryPage from "./components/CountryPage";
 import Login from "./components/Login";
 import MapPage from "./components/MapPage";
@@ -27,10 +28,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route
-            path="/country/CAN"
-            element={<CountryPage country="Canada" />}
-          ></Route>
+          <Route path="/country/CAN" element={<Canada />}></Route>
           <Route
             path="/country/USA"
             element={<CountryPage country="United States of America" />}
